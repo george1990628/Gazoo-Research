@@ -1,19 +1,35 @@
-# Gazoo Research: tagged-record filtering
+# USC Keck research: exploratory record analysis
 
-An early exploratory Pandas notebook for filtering records stored in a long-form schema. The public example now uses fully synthetic rows so readers can run the filtering logic without a research-data upload.
+**Status: historical research code (2024); public example uses synthetic data.**
 
-## What it demonstrates
+Exploratory analysis from my USC Keck radiation-oncology research experience. The uploaded notebook implements tagged-record filtering and reshaping, event-date calculations, stage and PSA plots, standardized nearest-neighbor lookup, and a separate ViT image-similarity toy example.
 
-- Representing tagged records with columns such as `id`, `tag`, `field`, and `value`.
-- Selecting records that match several conditions using a reusable `find_rows` helper.
-- Preserving the DataFrame index when combining filters.
+## Included work
 
-## Run
+| File | Purpose |
+| --- | --- |
+| [George.ipynb](George.ipynb) | Self-contained analysis using invented demonstration records. |
+| [ViT image similarity](notebooks/vit_image_similarity.ipynb) | Compare cat/dog/query images using a pretrained ViT embedding and cosine similarity. |
+| [DOCX utility](tools/docx_to_pdf.py) | Original paragraph-only document converter, separated from the analysis. |
 
-Open [`George.ipynb`](George.ipynb) in Jupyter or Google Colab and run the cells in order. Pandas is the only dependency; install it with `python -m pip install pandas` if needed. The example data is created inside the notebook.
+## Run the analysis
 
-## Project scope
+Install the core packages, open `George.ipynb` in Jupyter or Colab, and run the cells in order:
 
-This is a historical filtering example, not a complete clinical-data pipeline or a trained prediction model. The November 2026 portfolio cleanup replaced uploaded-record examples with invented data, cleared saved outputs, converted an unfinished sketch to explanatory text, and fixed filter-mask alignment for non-default indexes.
+```bash
+python -m pip install -r requirements.txt
+```
 
-No source clinical records are distributed with this example. The original notebook's unused GazooResearchUtils dependency is not needed for the demonstrated Pandas operation.
+No clinical file upload is required. The synthetic records are created inside the notebook. The optional image and document utilities require `requirements-optional.txt` and user-supplied example files.
+
+## Scope and interpretation
+
+The public notebook contains no source patient records or saved clinical-data outputs. The synthetic values illustrate software behavior only. The event-interval calculation is not survival analysis; the nearest-neighbor example is not a validated clinical model. ViT is demonstrated on ordinary images, not a reproduced clinical image-retrieval evaluation.
+
+The document utility converts paragraph text only and substitutes characters outside Latin-1; it does not preserve complex Word layouts.
+
+## Public preparation
+
+Saved outputs, widget metadata, source record references, and personal Drive paths were removed. The analysis now creates synthetic input, fixes the original `Print` typo and Pandas mask-index alignment, converts nearest-neighbor inputs to numeric values, and avoids chained assignment. The ViT example explicitly uses evaluation mode and RGB images. These are disclosed maintenance changes; no experiment results were invented.
+
+The Pandas analysis ran locally against the synthetic data. Optional pretrained-model inference and PDF conversion were not rerun during portfolio preparation. Third-party packages and model weights retain their original terms.

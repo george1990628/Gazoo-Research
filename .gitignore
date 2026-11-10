@@ -1,8 +1,16 @@
 __pycache__/
 .ipynb_checkpoints/
+.venv/
 .env
 *.csv
 *.xlsx
 *.xls
 *.parquet
+*.docx
+*.pdf
+*.jpg
+*.jpeg
+*.png
+*.pt
+*.pth
 .DS_Store
