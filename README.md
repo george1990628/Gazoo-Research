@@ -1,35 +1,31 @@
-# USC Keck research: exploratory record analysis
+# USC Keck: clinical data analysis
 
-**Status: historical research code (2024); public example uses synthetic data.**
+During my research at USC Keck, I used Pandas to organize clinical records, plot PSA measurements and disease-stage data, and calculate the time between surgery and biochemical progression. I also tried nearest-neighbor matching and image similarity with a pretrained ViT.
 
-Exploratory analysis from my USC Keck radiation-oncology research experience. The uploaded notebook implements tagged-record filtering and reshaping, event-date calculations, stage and PSA plots, standardized nearest-neighbor lookup, and a separate ViT image-similarity toy example.
+The examples in this repo use **synthetic data**. No patient records or saved clinical-data outputs are included.
 
-## Included work
+## Files
 
-| File | Purpose |
+| File | What it does |
 | --- | --- |
-| [George.ipynb](George.ipynb) | Self-contained analysis using invented demonstration records. |
-| [ViT image similarity](notebooks/vit_image_similarity.ipynb) | Compare cat/dog/query images using a pretrained ViT embedding and cosine similarity. |
-| [DOCX utility](tools/docx_to_pdf.py) | Original paragraph-only document converter, separated from the analysis. |
+| [George.ipynb](George.ipynb) | Filters and reshapes records, plots the data, and demonstrates nearest-neighbor lookup. |
+| [ViT image similarity](notebooks/vit_image_similarity.ipynb) | Compares cat, dog, and query images using ViT embeddings and cosine similarity. |
+| [DOCX-to-PDF utility](tools/docx_to_pdf.py) | Converts paragraph text from a Word file to PDF. |
 
 ## Run the analysis
-
-Install the core packages, open `George.ipynb` in Jupyter or Colab, and run the cells in order:
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-No clinical file upload is required. The synthetic records are created inside the notebook. The optional image and document utilities require `requirements-optional.txt` and user-supplied example files.
+Open `George.ipynb` in Jupyter or Colab and run the cells in order. It creates the synthetic records inside the notebook, so there is no data file to upload.
 
-## Scope and interpretation
+The image and document examples need the packages in `requirements-optional.txt` and your own sample files.
 
-The public notebook contains no source patient records or saved clinical-data outputs. The synthetic values illustrate software behavior only. The event-interval calculation is not survival analysis; the nearest-neighbor example is not a validated clinical model. ViT is demonstrated on ordinary images, not a reproduced clinical image-retrieval evaluation.
+## Notes
 
-The document utility converts paragraph text only and substitutes characters outside Latin-1; it does not preserve complex Word layouts.
+The synthetic data is there to show how the code works. Its plots do not establish clinical relationships. The date calculation does not account for censoring, and the nearest-neighbor example is a simple lookup using two variables. The ViT example uses ordinary images.
 
-## Public preparation
+The document converter handles paragraph text only. It does not preserve complex Word formatting and replaces characters outside Latin-1.
 
-Saved outputs, widget metadata, source record references, and personal Drive paths were removed. The analysis now creates synthetic input, fixes the original `Print` typo and Pandas mask-index alignment, converts nearest-neighbor inputs to numeric values, and avoids chained assignment. The ViT example explicitly uses evaluation mode and RGB images. These are disclosed maintenance changes; no experiment results were invented.
-
-The Pandas analysis ran locally against the synthetic data. Optional pretrained-model inference and PDF conversion were not rerun during portfolio preparation. Third-party packages and model weights retain their original terms.
+I cleaned up the original notebook by fixing the `Print` typo, aligning the filter mask with the DataFrame index, converting model inputs to numbers, and removing chained assignment. The ViT example now uses evaluation mode and RGB images. The Pandas notebook was checked using the synthetic data.
